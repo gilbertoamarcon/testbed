@@ -9,11 +9,12 @@
 hdir=$(pwd)
 
 cd models
-create-ws.sh mobile
-create-package.sh mobile testbed
+./create-ws.sh mobile
+./create-package.sh mobile testbed
 cd ../..
-cp -Rf testbed $(ropack find testbed)/
-cd $(ropack find testbed)/models/
+source ~/.bashrc
+cp -Rf testbed $(rospack find testbed)/
+cd $(rospack find testbed)/models/
 ./create-models.sh
 
 # Back to original working directory
