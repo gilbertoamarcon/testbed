@@ -1,0 +1,14 @@
+<launch>
+
+	<!--- Run gmapping -->
+	<include file="$(find testbed)/launch/gmapping.launch" />
+
+	<!--- Run Move Base -->
+	<include file="$(find testbed)/launch/move_base.launch" />
+
+	<node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization"> 
+		<rosparam command="load" file="$(find testbed)/config/robot_localization.yaml" />
+    	<remap from="/summit_xl/joint_states" to="/joint_states" />
+	</node>
+
+</launch>
